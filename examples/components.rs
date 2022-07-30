@@ -54,7 +54,7 @@ fn main() {
 }
 
 fn setup(mut commands: Commands) {
-    commands.spawn_bundle(UiCameraBundle::default());
+    commands.spawn_bundle(Camera2dBundle::default());
 }
 
 fn mouse_click_system(
@@ -116,7 +116,7 @@ fn spawn_ui_infobox(
                         position_type: PositionType::Absolute,
                         align_items: AlignItems::FlexStart,
                         flex_direction: FlexDirection::ColumnReverse,
-                        position: Rect {
+                        position: UiRect {
                             left: Val::Px(20.0),
                             bottom: Val::Px(10.0),
                             ..default()
@@ -130,17 +130,16 @@ fn spawn_ui_infobox(
                 // Add children some of which can be stateful
                 .with_children(|parent| {
                     parent.spawn_bundle(TextBundle {
-                        text: Text::with_section(
+                        text: Text::from_section(
                             "Animals".to_owned(),
                             TextStyle {
                                 font_size: 32.0,
                                 color: Color::BLUE,
                                 font: asset_server.load("font.ttf").clone(),
                             },
-                            Default::default(),
                         ),
                         style: Style {
-                            margin: Rect::all(Val::Px(5.0)),
+                            margin: UiRect::all(Val::Px(5.0)),
                             ..default()
                         },
                         ..default()
@@ -176,17 +175,16 @@ fn spawn_ui_infobox_cats(
                 .with_children(|parent| {
                     //Should spawn cat stuff
                     parent.spawn_bundle(TextBundle {
-                        text: Text::with_section(
+                        text: Text::from_section(
                             "Cat stuff",
                             TextStyle {
                                 font_size: 20.0,
                                 color: Color::BLUE,
                                 font: asset_server.load("font.ttf").clone(),
                             },
-                            Default::default(),
                         ),
                         style: Style {
-                            margin: Rect::all(Val::Px(5.0)),
+                            margin: UiRect::all(Val::Px(5.0)),
                             ..default()
                         },
                         ..default()
@@ -221,17 +219,16 @@ fn spawn_ui_infobox_cats_facts(
                 .with_children(|parent| {
                     //Should spawn cat facts
                     parent.spawn_bundle(TextBundle {
-                        text: Text::with_section(
+                        text: Text::from_section(
                             "Cats can jump 5 times their own height.",
                             TextStyle {
                                 font_size: 20.0,
                                 color: Color::BLUE,
                                 font: asset_server.load("font.ttf").clone(),
                             },
-                            Default::default(),
                         ),
                         style: Style {
-                            margin: Rect::all(Val::Px(5.0)),
+                            margin: UiRect::all(Val::Px(5.0)),
                             ..default()
                         },
                         ..default()
@@ -297,17 +294,16 @@ fn spawn_ui_infobox_dogs(
                 .with_children(|parent| {
                     //Should spawn dog stuff
                     parent.spawn_bundle(TextBundle {
-                        text: Text::with_section(
+                        text: Text::from_section(
                             "Dog stuff",
                             TextStyle {
                                 font_size: 20.0,
                                 color: Color::YELLOW,
                                 font: asset_server.load("font.ttf").clone(),
                             },
-                            Default::default(),
                         ),
                         style: Style {
-                            margin: Rect::all(Val::Px(5.0)),
+                            margin: UiRect::all(Val::Px(5.0)),
                             ..default()
                         },
                         ..default()
